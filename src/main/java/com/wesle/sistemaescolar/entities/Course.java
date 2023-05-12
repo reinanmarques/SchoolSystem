@@ -39,6 +39,6 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     @Setter(AccessLevel.NONE)
-    private List<Student> students;
+    private List<Student> students= new ArrayList<>();
     private String password;
 }

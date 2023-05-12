@@ -1,12 +1,16 @@
 package com.wesle.sistemaescolar.controllers;
 
+import com.wesle.sistemaescolar.dto.request.RegisterProfessorDTO;
 import com.wesle.sistemaescolar.dto.response.ProfessorDTO;
 import com.wesle.sistemaescolar.services.contract.ProfessorService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.UUID;
 
 @RestController
@@ -30,8 +34,9 @@ public class ProfessorController {
             return  ResponseEntity.ok(service.findById(id));
     }
     @PostMapping
-    public ResponseEntity<ProfessorDTO> save(@RequestBody ProfessorDTO dto){
-
-            return  null;
+    public ResponseEntity<ProfessorDTO> save(@RequestBody RegisterProfessorDTO professorDTO, UriComponentsBuilder uriBuilder){
+       ProfessorDTO profDTO = service.save(professorDTO);
+        URI uri = uriBuilder.path("/users/{id}").buildAndExpand(profDTO.getId()).toUri();
+            return  ResponseEntity.created(uri).body(profDTO);
     }
 }

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +29,6 @@ public class Subject  {
     private Professor professor;
 
     @ManyToMany(mappedBy = "subjects")
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
 
 }
