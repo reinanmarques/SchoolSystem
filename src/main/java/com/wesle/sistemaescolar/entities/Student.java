@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -26,9 +24,8 @@ public class Student  {
     @Email @NotBlank
     private String email;
 
-    @ManyToMany
-    @JoinTable(name = "tb_alunos_subjects", joinColumns = @JoinColumn(name = "aluno_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
-    private List<Subject> subjects = new ArrayList<>();
+    @ManyToOne
+    private Course course;
 
     private String registration;
 

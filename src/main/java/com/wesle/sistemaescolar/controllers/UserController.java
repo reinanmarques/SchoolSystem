@@ -10,6 +10,6 @@ public class UserController {
 
     @GetMapping
     public String equals() {
-        return "teste";
+        return "index";
     }
 }

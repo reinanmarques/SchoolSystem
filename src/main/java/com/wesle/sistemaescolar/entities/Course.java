@@ -12,26 +12,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
 @Entity
-@Table(name = "professors")
-public class Professor {
+@Data
+@Table(name = "courses")
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @NotBlank @Size(max = 200)
+    @NotBlank
+    @Size(max = 200)
     private String name;
 
-    @NotBlank @Email
-    private String email;
-    @OneToMany(mappedBy = "professor")
+
+    @ManyToMany
     @Setter(AccessLevel.NONE)
-    private List<Subject> subjectsTaught = new ArrayList<>();
 
+    @JoinTable(name = "course_subjects",
+            joinColumns = @JoinColumn (name = "couse_id"),
+                inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    private List<Subject> subjects;
+
+
+    @OneToMany(mappedBy = "course")
+    @Setter(AccessLevel.NONE)
+    private List<Student> students;
     private String password;
-
-
-
 }

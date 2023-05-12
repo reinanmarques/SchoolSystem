@@ -1,16 +1,20 @@
 package com.wesle.sistemaescolar.services.contract;
 
+import com.wesle.sistemaescolar.dto.request.RegisterProfessorDTO;
 import com.wesle.sistemaescolar.dto.request.RegisterStudentDTO;
+import com.wesle.sistemaescolar.dto.response.ProfessorDTO;
 import com.wesle.sistemaescolar.dto.response.StudentDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface ProfessorService {
 
-    public List<StudentDTO> findAll();
-    public StudentDTO findById(UUID id);
-    public List<RegisterStudentDTO> save(RegisterStudentDTO registerStudentDTO);
-    public StudentDTO update(UUID id, StudentDTO dto);
+    public Page<ProfessorDTO> findAll(Pageable pageable);
+    public ProfessorDTO findById(UUID id);
+    public ProfessorDTO save(RegisterProfessorDTO registerProfessorDTO);
+    public ProfessorDTO update(UUID id, StudentDTO dto);
     public Void delete(UUID id);
 }

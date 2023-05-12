@@ -5,13 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Data
 @Entity
-
 @Table(name = "subjects")
 public class Subject  {
 
@@ -28,7 +26,6 @@ public class Subject  {
     private Professor professor;
 
     @ManyToMany(mappedBy = "subjects")
-    private List<Student> alunos= new ArrayList<>();
-
+    private List<Course> courses;
 
 }
