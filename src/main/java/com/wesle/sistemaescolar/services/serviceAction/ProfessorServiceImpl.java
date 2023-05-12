@@ -47,8 +47,14 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public ProfessorDTO update(UUID id, StudentDTO dto) {
-        return null;
+    public ProfessorDTO update(UUID id, ProfessorDTO dto) {
+        Professor entity  = repository.findById(id).orElseThrow(()-> new RuntimeException("Entity not Found"));
+
+        entity.setName(dto.getName());
+        entity.setEmail(dto.getEmail());
+
+        entity = repository.save(entity);
+        return new ProfessorDTO(entity);
     }
 
     @Override
@@ -56,3 +62,29 @@ public class ProfessorServiceImpl implements ProfessorService {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
