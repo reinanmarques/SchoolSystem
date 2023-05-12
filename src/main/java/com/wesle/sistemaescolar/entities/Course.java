@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "courses")
+@EqualsAndHashCode
 public class Course {
 
     @Id

@@ -1,7 +1,6 @@
 package com.wesle.sistemaescolar.services.serviceAction;
 
 import com.wesle.sistemaescolar.dto.request.RegisterProfessorDTO;
-import com.wesle.sistemaescolar.dto.request.RegisterStudentDTO;
 import com.wesle.sistemaescolar.dto.response.ProfessorDTO;
 import com.wesle.sistemaescolar.dto.response.StudentDTO;
 import com.wesle.sistemaescolar.entities.Professor;
@@ -11,9 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
@@ -33,7 +30,9 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     public ProfessorDTO findById(UUID id) {
-        return null;
+        Professor professor = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Entity Not found"));
+        return new ProfessorDTO(professor);
     }
 
     @Override
