@@ -3,9 +3,7 @@ package com.wesle.sistemaescolar.controllers;
 import com.wesle.sistemaescolar.controllers.contract.ProfessorController;
 import com.wesle.sistemaescolar.dto.request.RegisterProfessorDTO;
 import com.wesle.sistemaescolar.dto.response.ProfessorDTO;
-import com.wesle.sistemaescolar.dto.response.StudentDTO;
 import com.wesle.sistemaescolar.services.contract.ProfessorService;
-import com.wesle.sistemaescolar.util.Mapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +22,6 @@ public class ProfessorControllerImpl implements ProfessorController {
     public ProfessorControllerImpl(ProfessorService service) {
         this.service = service;
     }
-
 
     @GetMapping
     public ResponseEntity<Page<ProfessorDTO>> findAll(Pageable pageable) {

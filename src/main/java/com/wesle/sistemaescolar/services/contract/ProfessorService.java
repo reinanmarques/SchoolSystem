@@ -13,5 +13,5 @@ public interface ProfessorService {
     public ProfessorDTO findById(UUID id);
     public ProfessorDTO save(RegisterProfessorDTO registerProfessorDTO);
     public ProfessorDTO update(UUID id, ProfessorDTO dto);
-    public Void delete(UUID id);
+    public void delete(UUID id);
 }
