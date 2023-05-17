@@ -58,8 +58,8 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public Void delete(UUID id) {
-        return null;
+    public void delete(UUID id) {
+        repository.deleteById(id);
     }
 }
 
